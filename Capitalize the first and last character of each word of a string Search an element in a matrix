@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <ctype.h>
+void capitalizeWords(char str[]) 
+{
+    int i = 0;
+    while (str[i])
+    {
+        while (str[i] && isspace(str[i]))
+        {
+            i++;
+        }
+        if (str[i] && !isspace(str[i]))
+           {
+            int start = i;
+            while (str[i] && !isspace(str[i])) 
+            {
+                i++;
+            }
+            int end = i - 1;
+            str[start] = toupper(str[start]);
+            str[end] = toupper(str[end]);
+        }
+    }
+}
+
+void main() 
+{
+    char str[] = "hello world example";
+    printf("Original string: %s\n", str);
+    capitalizeWords(str);
+    printf("Capitalized string: %s\n", str);
+}
